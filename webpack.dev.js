@@ -1,8 +1,7 @@
-const path = require('path')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
 const base = require('./webpack.base')
-const WebpackDevServer = require("webpack-dev-server")
+const WebpackDevServer = require('webpack-dev-server')
 
 const devConfig = merge({
   mode: 'development',
@@ -12,7 +11,7 @@ const devConfig = merge({
   entry: {
     app: [
       'webpack-dev-server/client?http://0.0.0.0:3000',
-      'webpack/hot/only-dev-server',
+      'webpack/hot/only-dev-server'
     ]
   },
 
@@ -35,10 +34,9 @@ const devConfig = merge({
 
 new WebpackDevServer(webpack(devConfig), devConfig.devServer)
   .listen(3000, (err) => {
-
-    if(err) {
+    if (err) {
       return console.log(err)
     }
 
-    console.log("Listening on http://localhost:3000")
+    console.log('Listening on http://localhost:3000')
   })

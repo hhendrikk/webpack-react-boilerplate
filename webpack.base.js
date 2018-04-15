@@ -1,10 +1,9 @@
 const path = require('path')
-const webpack = require('webpack')
 
 module.exports = {
   entry: {
     app: [
-      path.join(__dirname, 'src', 'index.jsx')
+      path.join(__dirname, 'src', 'index.js')
     ]
   },
 
@@ -18,13 +17,13 @@ module.exports = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.jsx$/,
+        test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
         loader: 'standard-loader'
-      }, 
+      },
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
         loader: 'babel-loader'
@@ -33,6 +32,6 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   }
 }
