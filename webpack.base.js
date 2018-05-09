@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -8,23 +9,30 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
-    publicPath: '/dist/'
+    path: path.join(__dirname),
+    filename: '[name].bundle.[hash].js',
+    publicPath: ''
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'WEBPACK REACT BOILERPLATE',
+      template: path.join(__dirname, 'src', 'html', 'template.html')
+    })
+  ],
 
   module: {
     rules: [
       {
         enforce: 'pre',
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
+        include: path.join(__dirname, 'src'),
         exclude: /node_modules/,
         loader: 'standard-loader'
       },
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
+        include: path.join(__dirname, 'src'),
         exclude: /node_modules/,
         loader: 'babel-loader'
       }
