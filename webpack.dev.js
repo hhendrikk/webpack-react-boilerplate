@@ -4,6 +4,7 @@ const base = require('./webpack.base')
 const WebpackDevServer = require('webpack-dev-server')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const LISTEN_PORT = 3000
 
@@ -36,7 +37,8 @@ const devConfig = merge({
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css'
-    })
+    }),
+    new DashboardPlugin()
   ],
 
   module: {
@@ -45,8 +47,6 @@ const devConfig = merge({
       include: path.join(__dirname, 'src'),
       exclude: /node_modules/,
       loader: [
-        'style-loader',
-        'css-loader',
         'sass-loader'
       ]
     }]
