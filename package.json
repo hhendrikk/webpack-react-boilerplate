@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "webpack-dashboard -- node ./webpack.dev.js",
-    "build": "webpack --progress --config ./webpack.prod.js -p",
+    "build": "cross-env NODE_ENV=production webpack --progress --config ./webpack.prod.js -p",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -19,6 +19,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.0",
