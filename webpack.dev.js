@@ -48,7 +48,7 @@ const devConfig = merge(
           test: /\.s?[ac]ss$/,
           include: path.join(__dirname, 'src'),
           exclude: /node_modules/,
-          loader: ['style-loader', 'css-loader', 'sass-loader']
+          loader: ['style-loader', 'css-loader?modules', 'sass-loader']
         }
       ]
     }

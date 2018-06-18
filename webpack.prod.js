@@ -53,7 +53,11 @@ module.exports = merge(base, {
         test: /\.s?[ac]ss$/,
         include: path.join(__dirname, 'src'),
         exclude: /node_modules/,
-        loader: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        loader: [
+          MiniCssExtractPlugin.loader,
+          'css-loader?modules',
+          'sass-loader'
+        ]
       }
     ]
   }
