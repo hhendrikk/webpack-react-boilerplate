@@ -12,7 +12,11 @@ module.exports = merge(base, {
   devtool: 'source-map',
 
   output: {
-    path: path.join(__dirname, 'build', `production_created_${new Date().toISOString()}`),
+    path: path.join(
+      __dirname,
+      'build',
+      `production_created_${new Date().toISOString()}`
+    ),
     filename: '[name].bundle.[chunkhash].js'
   },
 
@@ -33,7 +37,7 @@ module.exports = merge(base, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': '"production"'
+        NODE_ENV: '"production"'
       }
     }),
 
@@ -44,15 +48,13 @@ module.exports = merge(base, {
   ],
 
   module: {
-    rules: [{
-      test: /\.s?[ac]ss$/,
-      include: path.join(__dirname, 'src'),
-      exclude: /node_modules/,
-      loader: [
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-        'sass-loader'
-      ]
-    }]
+    rules: [
+      {
+        test: /\.s?[ac]ss$/,
+        include: path.join(__dirname, 'src'),
+        exclude: /node_modules/,
+        loader: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+    ]
   }
 })
