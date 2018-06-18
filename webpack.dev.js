@@ -5,6 +5,8 @@ const WebpackDevServer = require('webpack-dev-server')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const LISTEN_PORT = 3000
+
 const devConfig = merge({
   mode: 'development',
 
@@ -52,10 +54,11 @@ const devConfig = merge({
 }, base)
 
 new WebpackDevServer(webpack(devConfig), devConfig.devServer)
-  .listen(3000, (err) => {
+  .listen(3000, '0.0.0.0', (err) => {
     if (err) {
-      return console.log(err)
+      console.log(err)
+      return
     }
 
-    console.log('Listening on http://localhost:3000')
+    console.log(`Listening on http://localhost:${LISTEN_PORT}`)
   })
