@@ -4,6 +4,7 @@ const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = merge(base, {
   mode: 'production',
@@ -30,6 +31,12 @@ module.exports = merge(base, {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': '"production"'
+      }
+    }),
+
     new MiniCssExtractPlugin({
       filename: '[name].[chunkhash].css',
       chunkFilename: '[id].[chunkhash].css'

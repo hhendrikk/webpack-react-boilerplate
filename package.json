@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node ./webpack.dev.js",
-    "build": "webpack --config ./webpack.prod.js",
+    "build": "webpack --progress --config ./webpack.prod.js -p",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
