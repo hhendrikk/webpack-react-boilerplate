@@ -1,24 +1,26 @@
-const merge = require('webpack-merge')
 const base = require('./webpack.base')
-const path = require('path')
+const { join } = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const webpack = require('webpack')
 
-module.exports = merge(base, {
+module.exports = {
   mode: 'production',
 
   devtool: 'source-map',
 
-  output: {
-    path: path.join(
+  entry: base.entry,
+
+  output: Object.assign({}, base.output, {
+    path: join(
       __dirname,
+      '..',
       'build',
-      `production_created_${new Date().toISOString()}`
+      `production_created_${new Date().toISOString().replace(/:/gi, '_')}`
     ),
     filename: '[name].bundle.[chunkhash].js'
-  },
+  }),
 
   optimization: {
     minimizer: [
@@ -35,10 +37,10 @@ module.exports = merge(base, {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
+    ...base.plugins,
+
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production'
     }),
 
     new MiniCssExtractPlugin({
@@ -49,16 +51,16 @@ module.exports = merge(base, {
 
   module: {
     rules: [
-      {
-        test: /\.s?[ac]ss$/,
-        include: path.join(__dirname, 'src'),
-        exclude: /node_modules/,
-        loader: [
+      base.standardPreLoader,
+      base.jsLoader,
+      Object.assign({}, base.cssLoader, {
+        use: [
           MiniCssExtractPlugin.loader,
-          'css-loader?modules',
-          'sass-loader'
+          ...base.cssLoader.use.slice(1)
         ]
-      }
+      })
     ]
-  }
-})
+  },
+
+  resolve: base.resolve
+}
