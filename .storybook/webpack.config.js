@@ -6,13 +6,15 @@
 // When you add this file, we won't add the default configurations which is similar
 // to "React Create App". This only has babel loader to load JavaScript.
 
-module.exports = {
-  plugins: [
-    // your custom plugins
-  ],
-  module: {
-    rules: [
-      // add your custom rules.
-    ],
-  },
-};
+const webpackBase = require('../webpack/webpack.base')
+
+module.exports = (storybookBaseConfig, configType) => {
+  storybookBaseConfig.module.rules.push(
+    webpackBase.standardPreLoader,
+    webpackBase.cssLoader
+  )
+
+  storybookBaseConfig.resolve = webpackBase.resolve
+
+  return storybookBaseConfig
+}
