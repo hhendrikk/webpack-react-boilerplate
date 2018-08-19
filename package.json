@@ -8,7 +8,8 @@
     "lint:watch": "gulp",
     "build": "cross-env NODE_ENV=production webpack --progress --config ./webpack/webpack.prod.js -p",
     "storybook": "start-storybook -p 6006 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook"
+    "build-storybook": "build-storybook -c .storybook",
+    "update-packages": "node scripts/update-packages.js"
   },
   "dependencies": {
     "react": "^16.4.2",
@@ -27,6 +28,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.5.0",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
