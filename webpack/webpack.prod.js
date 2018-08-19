@@ -3,6 +3,7 @@ const { join } = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
@@ -16,8 +17,7 @@ module.exports = {
     path: join(
       __dirname,
       '..',
-      'build',
-      `production_created_${new Date().toISOString().replace(/:/gi, '_')}`
+      'build'
     ),
     filename: '[name].bundle.[chunkhash].js'
   }),
@@ -38,6 +38,14 @@ module.exports = {
 
   plugins: [
     ...base.plugins,
+
+    new CleanWebpackPlugin(
+      ['build'],
+      {
+        root: join(__dirname, '..'),
+        verbose: true
+      }
+    ),
 
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production'
