@@ -1,5 +1,4 @@
 const base = require('./webpack.base')
-const { join } = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
@@ -11,14 +10,10 @@ module.exports = {
 
   devtool: 'source-map',
 
-  entry: base.entry,
+  entry: base.entry.app,
 
   output: Object.assign({}, base.output, {
-    path: join(
-      __dirname,
-      '..',
-      'build'
-    ),
+    path: base.paths.dist,
     filename: '[name].bundle.[chunkhash].js'
   }),
 
@@ -33,16 +28,25 @@ module.exports = {
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: { discardComments: { removeAll: true } }
       })
-    ]
+    ],
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   },
 
   plugins: [
     ...base.plugins,
 
     new CleanWebpackPlugin(
-      ['build'],
+      ['dist'],
       {
-        root: join(__dirname, '..'),
+        root: base.paths.root,
         verbose: true
       }
     ),
