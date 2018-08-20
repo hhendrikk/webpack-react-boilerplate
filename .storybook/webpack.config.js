@@ -7,10 +7,16 @@
 // to "React Create App". This only has babel loader to load JavaScript.
 
 const webpackBase = require('../webpack/webpack.base')
+const { join } = require('path')
 
 module.exports = (storybookBaseConfig, configType) => {
   storybookBaseConfig.module.rules.push(
-    webpackBase.standardPreLoader,
+    Object.assign({}, webpackBase.standardPreLoader, {
+      include: [
+        join(__dirname, '..', 'stories'),
+        join(__dirname, '..', 'src')
+      ]
+    }),
     webpackBase.cssLoader
   )
 
