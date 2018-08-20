@@ -17,7 +17,8 @@ module.exports = (storybookBaseConfig, configType) => {
         join(__dirname, '..', 'src')
       ]
     }),
-    webpackBase.cssLoader
+    webpackBase.cssLoader,
+    webpackBase.fileLoader
   )
 
   storybookBaseConfig.resolve = webpackBase.resolve

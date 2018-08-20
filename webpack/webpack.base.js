@@ -58,6 +58,20 @@ module.exports = {
     ]
   },
 
+  fileLoader: {
+    test: /\.(jpe?g|png|gif|svg)$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: '[name][sha256:hash:base64:8].[ext]',
+          outputPath: 'images',
+          path: 'images'
+        }
+      }
+    ]
+  },
+
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {

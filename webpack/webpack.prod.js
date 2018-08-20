@@ -71,7 +71,8 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           ...base.cssLoader.use.slice(1)
         ]
-      })
+      }),
+      base.fileLoader
     ]
   },
 
