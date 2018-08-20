@@ -32,7 +32,12 @@ module.exports = {
     test: /\.js$/,
     include: paths.src,
     exclude: /node_modules/,
-    use: 'standard-loader'
+    use: {
+      loader: 'standard-loader',
+      options: {
+        parser: 'babel-eslint'
+      }
+    }
   },
 
   jsLoader: {

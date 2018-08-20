@@ -6,10 +6,13 @@
   ],
   "plugins": [
     "react-hot-loader/babel",
-    ["transform-runtime", {
-      "helpers": false,
-      "polyfill": false,
-      "regenerator": true
-    }]
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
   ]
 }
