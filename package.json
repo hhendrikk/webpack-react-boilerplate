@@ -11,6 +11,14 @@
     "build-storybook": "cross-env NODE_ENV=production build-storybook -c .storybook",
     "update-packages": "node scripts/update-packages.js"
   },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "expect",
+      "test"
+    ]
+  },
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "react": "^16.4.2",
@@ -26,6 +34,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
