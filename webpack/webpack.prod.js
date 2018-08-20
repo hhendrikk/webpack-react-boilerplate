@@ -8,8 +8,6 @@ const webpack = require('webpack')
 module.exports = {
   mode: 'production',
 
-  devtool: 'source-map',
-
   entry: base.entry.app,
 
   output: Object.assign({}, base.output, {
@@ -22,7 +20,6 @@ module.exports = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true,
         extractComments: true
       }),
       new OptimizeCSSAssetsPlugin({
@@ -31,9 +28,11 @@ module.exports = {
     ],
     splitChunks: {
       cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
+        react: {
+          test: ({ resource }) => (
+            /node_modules(\\|\/)+react(-dom)?/.test(resource)
+          ),
+          name: 'react-build',
           chunks: 'all'
         }
       }
