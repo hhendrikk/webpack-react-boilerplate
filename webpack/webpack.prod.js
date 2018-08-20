@@ -23,7 +23,9 @@ module.exports = {
         extractComments: true
       }),
       new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: { discardComments: { removeAll: true } }
+        cssProcessor: require('cssnano'),
+        cssProcessorOptions: { discardComments: { removeAll: true } },
+        canPrint: true
       })
     ],
     splitChunks: {
