@@ -3,6 +3,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const webpack = require('webpack')
 
 module.exports = {
@@ -30,6 +31,17 @@ module.exports = {
     ],
     splitChunks: {
       cacheGroups: {
+        vendors: {
+          test: ({ resource }) => {
+            if (/node_modules(\\|\/)+react(-dom)?/.test(resource)) {
+              return false
+            }
+
+            return /node_modules/.test(resource)
+          },
+          name: 'vendors',
+          chunks: 'all'
+        },
         react: {
           test: ({ resource }) => (
             /node_modules(\\|\/)+react(-dom)?/.test(resource)
@@ -42,6 +54,8 @@ module.exports = {
   },
 
   plugins: [
+    new BundleAnalyzerPlugin(),
+
     ...base.plugins,
 
     new CleanWebpackPlugin(

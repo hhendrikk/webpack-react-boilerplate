@@ -31,7 +31,6 @@ module.exports = {
     enforce: 'pre',
     test: /\.js$/,
     include: paths.src,
-    exclude: /node_modules/,
     use: {
       loader: 'standard-loader',
       options: {
@@ -43,14 +42,12 @@ module.exports = {
   jsLoader: {
     test: /\.js$/,
     include: paths.src,
-    exclude: /node_modules/,
     use: 'babel-loader'
   },
 
   cssLoader: {
     test: /\.s?[ac]ss$/,
     include: paths.src,
-    exclude: /node_modules/,
     use: [
       'style-loader',
       'css-loader?modules',
