@@ -30,6 +30,10 @@ module.exports = {
     }
   },
 
+  vendorsSplitTest: /[\\/]node_modules[\\/](vendors_pacote)+/,
+
+  reactSplitTest: /[\\/]node_modules[\\/](react(-dom)?|fbjs)+/,
+
   standardPreLoader: {
     enforce: 'pre',
     test: /\.js$/,

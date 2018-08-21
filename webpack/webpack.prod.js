@@ -31,24 +31,17 @@ module.exports = {
       })
     ],
     splitChunks: {
+      chunks: 'all',
       cacheGroups: {
         vendors: {
-          test: ({ resource }) => {
-            if (/node_modules(\\|\/)+react(-dom)?/.test(resource)) {
-              return false
-            }
-
-            return /node_modules/.test(resource)
-          },
-          name: 'vendors',
-          chunks: 'all'
+          test: base.vendorsSplitTest,
+          chunks: 'all',
+          name: 'vendors'
         },
         react: {
-          test: ({ resource }) => (
-            /node_modules(\\|\/)+react(-dom)?/.test(resource)
-          ),
-          name: 'react-build',
-          chunks: 'all'
+          test: base.reactSplitTest,
+          chunks: 'all',
+          name: 'react'
         }
       }
     }
