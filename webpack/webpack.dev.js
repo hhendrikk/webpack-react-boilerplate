@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const base = require('./webpack.base')
 const DashboardPlugin = require('webpack-dashboard/plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const LISTEN_PORT = 3000
 
@@ -10,8 +11,8 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    app: [
-      ...base.entry.app,
+    main: [
+      ...base.entry.main,
       `webpack-dev-server/client?http://0.0.0.0:${LISTEN_PORT}`,
       'webpack/hot/only-dev-server'
     ]
@@ -31,7 +32,7 @@ module.exports = {
   },
 
   plugins: [
-    ...base.plugins,
+    new HtmlWebpackPlugin(base.htmlPlugin),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

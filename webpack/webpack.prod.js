@@ -4,12 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
   mode: 'production',
 
-  entry: base.entry.app,
+  entry: base.entry.main,
 
   output: Object.assign({}, base.output, {
     path: base.paths.dist,
@@ -54,9 +55,9 @@ module.exports = {
   },
 
   plugins: [
-    new BundleAnalyzerPlugin(),
-
-    ...base.plugins,
+    new HtmlWebpackPlugin(Object.assign({}, base.htmlPlugin, {
+      minify: { collapseWhitespace: true }
+    })),
 
     new CleanWebpackPlugin(
       ['dist'],
@@ -74,7 +75,9 @@ module.exports = {
       filename: '[name].[chunkhash].css',
       chunkFilename: '[id].[chunkhash].css'
     })
-  ],
+  ].concat(
+    process.env.ANALIZER ? new BundleAnalyzerPlugin() : []
+  ),
 
   module: {
     rules: [

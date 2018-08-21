@@ -1,5 +1,4 @@
 const { join } = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const paths = {
   root: join(__dirname, '..'),
@@ -11,7 +10,7 @@ module.exports = {
   paths,
 
   entry: {
-    app: [join(paths.src, 'index.js')]
+    main: [join(paths.src, 'index.js')]
   },
 
   output: {
@@ -20,12 +19,16 @@ module.exports = {
     publicPath: ''
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'WEBPACK REACT BOILERPLATE',
-      template: join(paths.src, 'html', 'template.html')
-    })
-  ],
+  htmlPlugin: {
+    title: 'WEBPACK REACT BOILERPLATE',
+    template: join(paths.src, 'html', 'template.html'),
+    chunksSortMode: (chunk1, chunk2) => {
+      const order = ['react-build', 'vendor', 'main']
+      const left = order.indexOf(chunk1.names[0])
+      const right = order.indexOf(chunk2.names[0])
+      return left - right
+    }
+  },
 
   standardPreLoader: {
     enforce: 'pre',
