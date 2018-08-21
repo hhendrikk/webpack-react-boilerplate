@@ -18,7 +18,8 @@ module.exports = (storybookBaseConfig, configType) => {
       ]
     }),
     webpackBase.cssLoader,
-    webpackBase.fileLoader
+    webpackBase.fileLoader,
+    webpackBase.urlLoader
   )
 
   storybookBaseConfig.resolve = webpackBase.resolve

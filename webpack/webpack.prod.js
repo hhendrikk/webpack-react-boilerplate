@@ -66,13 +66,14 @@ module.exports = {
     rules: [
       base.standardPreLoader,
       base.jsLoader,
+      base.fileLoader,
+      base.urlLoader,
       Object.assign({}, base.cssLoader, {
         use: [
           MiniCssExtractPlugin.loader,
           ...base.cssLoader.use.slice(1)
         ]
-      }),
-      base.fileLoader
+      })
     ]
   },
 

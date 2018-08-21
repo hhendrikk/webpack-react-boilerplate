@@ -47,7 +47,8 @@ module.exports = {
       base.standardPreLoader,
       base.jsLoader,
       base.cssLoader,
-      base.fileLoader
+      base.fileLoader,
+      base.urlLoader
     ]
   },
 

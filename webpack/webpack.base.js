@@ -59,14 +59,26 @@ module.exports = {
   },
 
   fileLoader: {
-    test: /\.(jpe?g|png|gif|svg)$/,
+    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
     use: [
       {
         loader: 'file-loader',
         options: {
           name: '[name][sha256:hash:base64:8].[ext]',
-          outputPath: 'images',
-          path: 'images'
+          outputPath: 'media',
+          path: 'media'
+        }
+      }
+    ]
+  },
+
+  urlLoader: {
+    test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
+    use: [
+      {
+        loader: require.resolve('url-loader'),
+        options: {
+          limit: 10000
         }
       }
     ]
