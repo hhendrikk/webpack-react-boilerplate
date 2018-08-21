@@ -76,7 +76,7 @@ module.exports = {
     test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
     use: [
       {
-        loader: require.resolve('url-loader'),
+        loader: 'url-loader',
         options: {
           limit: 10000
         }
