@@ -16,7 +16,7 @@ module.exports = {
   paths,
 
   entry: {
-    main: [join(paths.src, 'index.js')]
+    main: join(paths.src, 'index.js')
   },
 
   output: {
@@ -38,7 +38,6 @@ module.exports = {
 
   vendorsSplitTest: () => {
     if (vendors.length === 0) return /^$/
-    console.log(vendors)
     return new RegExp(`${regexNodeModulesStr}(${vendors.join('|').replace(/\./gi, '\\.')})+`)
   },
 

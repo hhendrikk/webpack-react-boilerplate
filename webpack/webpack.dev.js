@@ -12,7 +12,7 @@ module.exports = {
 
   entry: {
     main: [
-      ...base.entry.main,
+      base.entry.main,
       `webpack-dev-server/client?http://0.0.0.0:${LISTEN_PORT}`,
       'webpack/hot/only-dev-server'
     ]

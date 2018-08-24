@@ -10,7 +10,7 @@ const webpack = require('webpack')
 module.exports = {
   mode: 'production',
 
-  entry: base.entry.main,
+  entry: base.entry,
 
   output: Object.assign({}, base.output, {
     path: base.paths.dist,

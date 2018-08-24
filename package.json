@@ -1,15 +1,16 @@
 {
   "scripts": {
-    "start": "webpack-dashboard -- node ./server.js",
+    "start": "cross-env NODE_ENV=production node scripts/local-server.js",
+    "dev": "webpack-dashboard -- node ./server.js",
     "test": "jest --coverage",
     "test:watch": "yarn test --watch",
     "lint": "standard --parser babel-eslint --verbose | snazzy",
     "lint:fix": "standard --fix",
     "lint:watch": "gulp",
-    "build": "cross-env NODE_ENV=production webpack --progress --config ./webpack/webpack.prod.js -p",
+    "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --progress --config ./webpack/webpack.prod.js -p",
     "build:analizer": "cross-env ANALIZER=true yarn build",
     "storybook": "start-storybook -p 6006 -c .storybook",
-    "build-storybook": "cross-env NODE_ENV=production build-storybook -c .storybook",
+    "build-storybook": "cross-env NODE_ENV=production BABEL_ENV=production build-storybook -c .storybook",
     "update-packages": "node scripts/update-packages.js"
   },
   "standard": {
@@ -40,9 +41,11 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "compression": "^1.7.3",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "cssnano": "^4.0.5",
+    "express": "^4.16.3",
     "file-loader": "^1.1.11",
     "gulp": "^3.9.1",
     "html-webpack-plugin": "^3.2.0",
