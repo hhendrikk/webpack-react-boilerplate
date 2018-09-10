@@ -3,8 +3,8 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
 
-import './sass/app.scss'
-import reactLogo from './images/react-logo.svg'
+import 'sass/app.scss'
+import reactLogo from 'images/react-logo.svg'
 
 class App extends React.Component {
   render () {

@@ -102,7 +102,8 @@ module.exports = {
     alias: {
       src: paths.src,
       components: join(paths.src, 'components'),
-      sass: join(paths.src, 'sass')
+      sass: join(paths.src, 'sass'),
+      images: join(paths.src, 'images')
     }
   }
 }

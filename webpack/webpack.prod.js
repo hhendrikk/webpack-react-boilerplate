@@ -88,9 +88,9 @@ module.exports = {
   },
 
   resolve: Object.assign({}, base.resolve, {
-    alias: {
+    alias: Object.assign({}, base.resolve.alias, {
       'react': 'preact-compat',
       'react-dom': 'preact-compat'
-    }
+    })
   })
 }
