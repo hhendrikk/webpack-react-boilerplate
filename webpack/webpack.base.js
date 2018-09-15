@@ -26,7 +26,7 @@ module.exports = {
   },
 
   htmlPlugin: {
-    title: 'WEBPACK REACT BOILERPLATE',
+    title: 'My APP',
     template: join(paths.src, 'html', 'template.html'),
     chunksSortMode: (chunk1, chunk2) => {
       const order = ['react', 'vendors', 'main']

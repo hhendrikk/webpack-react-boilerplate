@@ -14,7 +14,8 @@ module.exports = {
 
   output: Object.assign({}, base.output, {
     path: base.paths.dist,
-    filename: '[name].bundle.[chunkhash].js'
+    filename: '[name].bundle.[chunkhash].js',
+    publicPath: ''
   }),
 
   optimization: {
@@ -76,7 +77,13 @@ module.exports = {
     rules: [
       base.standardPreLoader,
       base.jsLoader,
-      base.fileLoader,
+      Object.assign({}, base.fileLoader, {
+        use: Object.assign({}, base.fileLoader.use[0], {
+          options: Object.assign({}, base.fileLoader.use[0].options, {
+            publicPath: ''
+          })
+        })
+      }),
       base.urlLoader,
       Object.assign({}, base.cssLoader, {
         use: [
