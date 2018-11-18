@@ -10,7 +10,7 @@ class App extends React.Component {
   render () {
     return (
       <div className='container'>
-        <img src={reactLogo} style={{width: '40px', height: '40px'}} />
+        <img src={reactLogo} style={{ width: '40px', height: '40px' }} />
         My App
       </div>
     )

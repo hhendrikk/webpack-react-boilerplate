@@ -1,3 +1,5 @@
+'use strict'
+
 const base = require('./webpack.base')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -94,10 +96,12 @@ module.exports = {
     ]
   },
 
+
   resolve: Object.assign({}, base.resolve, {
     alias: Object.assign({}, base.resolve.alias, {
-      'react': 'preact-compat',
-      'react-dom': 'preact-compat'
+      // Uncomment if using preact instead of react
+      // 'react': 'preact-compat',
+      // 'react-dom': 'preact-compat'
     })
   })
 }

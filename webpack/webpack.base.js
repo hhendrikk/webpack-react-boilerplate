@@ -1,3 +1,5 @@
+'use strict'
+
 const { join } = require('path')
 const { dependencies } = require('../package.json')
 
@@ -8,7 +10,7 @@ const paths = {
 }
 
 const regexNodeModulesStr = '[\\\\/]node_modules[\\\\/]'
-const regexReactStr = '(react(-dom)?|fbjs|preact(-compat)?)+'
+const regexReactStr = '(react|react-dom|fbjs|preact(-compat)?)+'
 
 const vendors = Object.keys(dependencies).filter((value) => !(new RegExp(regexReactStr).test(value)))
 
@@ -16,7 +18,7 @@ module.exports = {
   paths,
 
   entry: {
-    main: join(paths.src, 'index.js')
+    app: join(paths.src, 'index.js')
   },
 
   output: {
@@ -29,7 +31,7 @@ module.exports = {
     title: 'My APP',
     template: join(paths.src, 'html', 'template.html'),
     chunksSortMode: (chunk1, chunk2) => {
-      const order = ['react', 'vendors', 'main']
+      const order = ['react', 'vendors', 'app']
       const left = order.indexOf(chunk1.names[0])
       const right = order.indexOf(chunk2.names[0])
       return left - right

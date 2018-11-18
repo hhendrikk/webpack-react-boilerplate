@@ -1,3 +1,5 @@
+'use strict'
+
 const webpack = require('webpack')
 const base = require('./webpack.base')
 const DashboardPlugin = require('webpack-dashboard/plugin')
@@ -11,8 +13,8 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    main: [
-      base.entry.main,
+    app: [
+      base.entry.app,
       `webpack-dev-server/client?http://0.0.0.0:${LISTEN_PORT}`,
       'webpack/hot/only-dev-server'
     ]
