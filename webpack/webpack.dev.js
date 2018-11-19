@@ -29,6 +29,10 @@ module.exports = {
       colors: true,
       stats: 'verbose'
     },
+    overlay: {
+      warnings: true,
+      errors: true
+    },
     hot: true,
     port: LISTEN_PORT
   },
