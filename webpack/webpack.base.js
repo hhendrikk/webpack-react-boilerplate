@@ -1,18 +1,12 @@
 'use strict'
 
 const { join } = require('path')
-const { dependencies } = require('../package.json')
 
 const paths = {
   root: join(__dirname, '..'),
   src: join(__dirname, '..', 'src'),
   dist: join(__dirname, '..', 'dist')
 }
-
-const regexNodeModulesStr = '[\\\\/]node_modules[\\\\/]'
-const regexReactStr = '(react|react-dom|fbjs|preact(-compat)?)+'
-
-const vendors = Object.keys(dependencies).filter((value) => !(new RegExp(regexReactStr).test(value)))
 
 module.exports = {
   paths,
@@ -37,13 +31,6 @@ module.exports = {
       return left - right
     }
   },
-
-  vendorsSplitTest: () => {
-    if (vendors.length === 0) return /^$/
-    return new RegExp(`${regexNodeModulesStr}(${vendors.join('|').replace(/\./gi, '\\.')})+`)
-  },
-
-  reactSplitTest: () => new RegExp(`${regexNodeModulesStr}${regexReactStr}`),
 
   standardPreLoader: {
     enforce: 'pre',

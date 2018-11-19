@@ -13,7 +13,6 @@ module.exports = (storybookBaseConfig, configType) => {
   storybookBaseConfig.module.rules.push(
     Object.assign({}, webpackBase.standardPreLoader, {
       include: [
-        join(__dirname, '..', 'stories'),
         join(__dirname, '..', 'src')
       ]
     }),

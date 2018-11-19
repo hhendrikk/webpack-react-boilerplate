@@ -34,17 +34,20 @@ module.exports = {
       })
     ],
     splitChunks: {
-      chunks: 'all',
       cacheGroups: {
         vendors: {
-          test: base.vendorsSplitTest(),
-          chunks: 'initial',
-          name: 'vendors'
-        },
-        react: {
-          test: base.reactSplitTest(),
+          test: /[\\/]node_modules[\\/]/,
           chunks: 'all',
-          name: 'react'
+          name: 'vendors',
+          priority: 20
+        },
+        common: {
+          name: 'common',
+          minChunks: 2,
+          chunks: 'async',
+          priority: 10,
+          reuseExistingChunk: true,
+          enforce: true
         }
       }
     }
@@ -95,13 +98,12 @@ module.exports = {
       })
     ]
   },
-
-
   resolve: Object.assign({}, base.resolve, {
-    alias: Object.assign({}, base.resolve.alias, {
-      // Uncomment if using preact instead of react
-      // 'react': 'preact-compat',
-      // 'react-dom': 'preact-compat'
-    })
+    alias: Object.assign({}, base.resolve.alias, (() => (
+      process.env.BUILD_LIB_ENV === 'preact' ? {
+        'react': 'preact-compat',
+        'react-dom': 'preact-compat'
+      } : {}
+    ))())
   })
 }
