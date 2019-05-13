@@ -89,10 +89,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      src: paths.src,
-      components: join(paths.src, 'components'),
-      sass: join(paths.src, 'sass'),
-      images: join(paths.src, 'images')
+      'src': paths.src,
+      'components': join(paths.src, 'components'),
+      'sass': join(paths.src, 'sass'),
+      'images': join(paths.src, 'images'),
+      'react-dom': '@hot-loader/react-dom'
     }
   }
 }

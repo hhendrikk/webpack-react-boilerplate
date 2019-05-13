@@ -58,13 +58,9 @@ module.exports = {
       minify: { collapseWhitespace: true }
     })),
 
-    new CleanWebpackPlugin(
-      ['dist'],
-      {
-        root: base.paths.root,
+    new CleanWebpackPlugin({
         verbose: true
-      }
-    ),
+    }),
 
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production'

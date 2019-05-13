@@ -9,8 +9,8 @@
 const webpackBase = require('../webpack/webpack.base')
 const { join } = require('path')
 
-module.exports = (storybookBaseConfig, configType) => {
-  storybookBaseConfig.module.rules.push(
+module.exports = ({ config, mode }) => {
+  config.module.rules.push(
     Object.assign({}, webpackBase.standardPreLoader, {
       include: [
         join(__dirname, '..', 'src')
@@ -21,7 +21,7 @@ module.exports = (storybookBaseConfig, configType) => {
     webpackBase.urlLoader
   )
 
-  storybookBaseConfig.resolve = webpackBase.resolve
+  config.resolve = webpackBase.resolve
 
-  return storybookBaseConfig
+  return config
 }
