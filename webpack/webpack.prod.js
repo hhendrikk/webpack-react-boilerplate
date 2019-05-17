@@ -9,6 +9,8 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
+const publicPath = ''
+
 module.exports = {
   mode: 'production',
 
@@ -17,7 +19,7 @@ module.exports = {
   output: Object.assign({}, base.output, {
     path: base.paths.dist,
     filename: '[name].bundle.[chunkhash].js',
-    publicPath: ''
+    publicPath
   }),
 
   optimization: {
@@ -81,7 +83,7 @@ module.exports = {
       Object.assign({}, base.fileLoader, {
         use: Object.assign({}, base.fileLoader.use[0], {
           options: Object.assign({}, base.fileLoader.use[0].options, {
-            publicPath: ''
+            publicPath
           })
         })
       }),

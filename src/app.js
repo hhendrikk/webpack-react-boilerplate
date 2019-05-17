@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import { hot } from 'react-hot-loader/root'
+
 import 'sass/app.scss'
 import reactLogo from 'images/react-logo.svg'
 
@@ -12,4 +14,4 @@ const App = () => (
   </div>
 )
 
-export default App
+export default hot(App)

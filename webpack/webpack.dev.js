@@ -13,11 +13,7 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    app: [
-      base.entry.app,
-      `webpack-dev-server/client?http://0.0.0.0:${LISTEN_PORT}`,
-      'webpack/hot/only-dev-server'
-    ]
+    app: base.entry.app
   },
 
   output: base.output,
