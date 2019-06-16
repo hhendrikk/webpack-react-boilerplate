@@ -19,7 +19,8 @@
       "it",
       "describe",
       "expect",
-      "test"
+      "test",
+      "fetch"
     ]
   },
   "dependencies": {
