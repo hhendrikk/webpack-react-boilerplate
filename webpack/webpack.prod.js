@@ -61,7 +61,7 @@ module.exports = {
     })),
 
     new CleanWebpackPlugin({
-        verbose: true
+      verbose: true
     }),
 
     new webpack.EnvironmentPlugin({

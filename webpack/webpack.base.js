@@ -94,8 +94,7 @@ module.exports = {
       'sass': join(paths.src, 'sass'),
       'images': join(paths.src, 'images'),
       'react-dom': '@hot-loader/react-dom',
-      'components': join(paths.src, 'components'),
-      'reducers' : join(paths.src, 'redux-flow', 'reducers')
+      'reducers': join(paths.src, 'redux-flow', 'reducers')
     }
   }
 }
