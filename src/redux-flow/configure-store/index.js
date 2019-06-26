@@ -8,6 +8,14 @@ import rootReducers from 'reducers'
 export default ({ initialState } = {}) => {
   const enhancer = compose(applyMiddleware(thunk), logger())
   const store = createStore(rootReducers, initialState, enhancer)
+
+  if (module.hot) {
+    module.hot.accept('reducers', () => {
+      const nextReducer = require('reducers').default
+      store.replaceReducer(nextReducer)
+    })
+  }
+
   return store
 }
 
