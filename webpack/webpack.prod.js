@@ -26,7 +26,7 @@ module.exports = {
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
-        parallel: true,
+        parallel: 2,
         extractComments: true
       }),
       new OptimizeCSSAssetsPlugin({
@@ -101,7 +101,9 @@ module.exports = {
       process.env.BUILD_LIB_ENV === 'preact' ? {
         'react': 'preact-compat',
         'react-dom': 'preact-compat'
-      } : {}
+      } : {
+        'react-dom': 'react-dom',
+      }
     ))())
   })
 }
