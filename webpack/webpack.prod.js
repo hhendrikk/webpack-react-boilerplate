@@ -1,4 +1,3 @@
-'use strict'
 
 const base = require('./webpack.base')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -94,7 +93,7 @@ module.exports = {
         'react': 'preact-compat',
         'react-dom': 'preact-compat'
       } : {
-        'react-dom': 'react-dom',
+        'react-dom': 'react-dom'
       }
     ))())
   })

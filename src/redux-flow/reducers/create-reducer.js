@@ -1,4 +1,3 @@
-'use strict'
 
 const createReducer = (initialState, handleActions) => {
   if (typeof initialState === 'undefined') {
