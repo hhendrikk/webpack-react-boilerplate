@@ -18,7 +18,7 @@ module.exports = {
   output: {
     path: paths.root,
     filename: '[name].bundle.[hash].js',
-    publicPath: ''
+    publicPath: '/'
   },
 
   htmlPlugin: {
